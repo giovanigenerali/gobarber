@@ -29,13 +29,13 @@ Aplicação para agendamentos de barbearia/cabeleireiro criado no Bootcamp da Ro
 
 ## Tecnologias
 
-- Node.js
-- Express
-- Postgres
-- Docker
-- Sequelize
-- Nunjucks
-- Multer
+- [Node.js](https://nodejs.org)
+- [Express](https://expressjs.com)
+- [Postgres](https://hub.docker.com/_/postgres)
+- [Docker](https://www.docker.com)
+- [Sequelize](https://sequelize.org/v5/)
+- [Nunjucks](https://mozilla.github.io/nunjucks)
+- [Multer](https://github.com/expressjs/multer)
 
 ## Autor
 
