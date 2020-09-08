@@ -1,0 +1,8 @@
+node_modules
+pgdata
+tmp
+!tmp/sessions/.gitkeep
+!tmp/sessions/.gitkeep
+.log
+client_id
+.DS_Store

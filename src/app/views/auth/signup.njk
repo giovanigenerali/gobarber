@@ -1,0 +1,46 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+  <form action="/signup" method="post" enctype="multipart/form-data">
+
+    {% include "_partials/flash.njk" %}
+
+    <label for="avatar">
+      <img src="/images/avatar.svg" height="24">
+      <input type="file" name="avatar" id="avatar">
+    </label>
+
+    <input type="text" name="name" placeholder="Nome completo" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <input type="password" name="password" placeholder="Senha secreta" required>
+
+    <label for="provider">
+      <input type="checkbox" name="provider" id="provider" value="1">
+      Sou cabelereiro
+    </label>
+
+    <button type="submit">Criar conta</button>
+
+    <a href="/">Já possuo conta</a>
+  </form>
+
+  <script type="text/javascript">
+    const avatarInput = document.getElementById('avatar');
+    const img = document.querySelector('label[for=avatar] img')
+    avatarInput.onchange = function(e) {
+      img.classList.add('preview')
+      img.src = URL.createObjectURL(e.target.files[0])
+    }
+
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (avatarInput.value == "") {
+        alert('Escolha uma foto para seu perfil');
+        return;
+      } else {
+        this.submit();
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Agendar horário</strong>
+
+    <div class="provider">
+      <div>
+        <img src="/files/{{ provider.avatar }}">
+        <strong>{{ provider.name }}</strong>
+      </div>
+    </div>
+
+    <form action="/app/appointments/new/{{ provider.id }}" method="post">
+      <input type="text" class="flatpickr" placeholder="Escolha uma data" required>
+
+      <div id="hours">
+      </div>
+
+
+      <div class="buttons-wrapper">
+        <a href="/app/dashboard" class="back">Voltar</a>
+        <button type="submit" disabled="true">Agendar</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    flatpickr('.flatpickr', {
+      minDate: new Date(),
+      dateFormat: 'd/m/Y',
+      onChange: function(date) {
+        document.querySelector('button[type=submit]').setAttribute('disabled', true)
+
+        fetch(`/app/available/{{ provider.id }}?date=${date[0].getTime()}`)
+        .then(function(response) {
+          response
+            .text()
+            .then(function(html) {
+              document.getElementById('hours').innerHTML = html
+            })
+        })
+      }
+    })
+
+    function handleCreateAppointment() {
+      document.querySelector('#hours').addEventListener('click', function(event) {
+        if (event.target.name == 'date' && event.target.checked) {
+          document.querySelector('button[type=submit]').removeAttribute('disabled')
+        }
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', handleCreateAppointment);
+  </script>
+{% endblock %}
