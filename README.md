@@ -1,4 +1,4 @@
-### GoBarber
+### ✂️ GoBarber
 
 Aplicação para agendamentos de barbearia/cabeleireiro criado no Bootcamp da [Rocketseat](https://rocketseat.com.br) em 2019.
 
